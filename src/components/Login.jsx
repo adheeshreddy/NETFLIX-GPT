@@ -1,6 +1,8 @@
 import React, { useRef, useState} from 'react';
 import Header from './Header';
 import { validateForm } from '../utils/validate';
+import {auth} from '../utils/firebase';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 const Login = () => {
   const[isSignIn, setIsSignIn] = useState(true); 
   const [message, setMessage] = useState(null);
@@ -9,9 +11,54 @@ const Login = () => {
   const fullName=useRef(null);
 const handleFormValidation = () => {
   // console.log(email,password,fullName);
-  console.log("asdasd");
+  // console.log("asdasd");
    const returnMessage= validateForm(email.current.value,password.current.value,isSignIn,fullName);
    setMessage(returnMessage);
+
+   if(returnMessage!==null){
+    return;
+   }
+   if(!isSignIn){
+    //sign up logic
+    createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
+  .then((userCredential) => {
+    // Signed up 
+    const user = userCredential.user;
+    console.log(user);
+    // ...
+  })
+  .catch((error) => {
+    // const errorCode = error.code;
+    // const errorMessage = error.message;
+    // setMessage(errorCode+"-"+errorMessage);
+    setMessage("Invalid email or password");
+    // ..
+  });
+    
+   }
+   else{
+    //sign in logic 
+
+    signInWithEmailAndPassword(auth, email.current.value, password.current.value)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    console.log(user);
+    // ...
+  })
+  .catch((error) => {
+    // const errorCode = error.code;
+    // const errorMessage = error.message;
+    // console.log(errorCode+""+errorMessage);
+    // setMessage(errorCode+"-"+errorMessage);
+    setMessage("Invalid email or password");
+  });
+    
+   }
+
+
+
+   
 }
   const handleSignIn = () => {
     setIsSignIn(!isSignIn);

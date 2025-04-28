@@ -2,6 +2,7 @@ export const validateForm=(email,password,isSignin,fullName)=>{
 
     const isValidEmail=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     const isValidPassword=/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/.test(password);
+    
 
     if(isSignin){
     if(!isValidEmail){
@@ -9,6 +10,7 @@ export const validateForm=(email,password,isSignin,fullName)=>{
     }
     if(!isValidPassword){
         return "Password is invalid";
+        
     }
 }
 else
