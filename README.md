@@ -1,6 +1,17 @@
 # Project Structure
 
-## Pages
+
+# netflix gpt
+- vite
+- tailwindcss
+- header
+- routing
+- login form
+- sign up form
+- form validation 
+-useRef hook
+
+## Pages , Features
 
 - **Login/Signup Page**
   - Sign In / Sign Up Form

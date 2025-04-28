@@ -1,9 +1,18 @@
-import React, { useState } from 'react';
+import React, { useRef, useState} from 'react';
 import Header from './Header';
-
+import { validateForm } from '../utils/validate';
 const Login = () => {
   const[isSignIn, setIsSignIn] = useState(true); 
-
+  const [message, setMessage] = useState(null);
+  const email=useRef(null);
+  const password=useRef(null);
+  const fullName=useRef(null);
+const handleFormValidation = () => {
+  // console.log(email,password,fullName);
+  console.log("asdasd");
+   const returnMessage= validateForm(email.current.value,password.current.value,isSignIn,fullName);
+   setMessage(returnMessage);
+}
   const handleSignIn = () => {
     setIsSignIn(!isSignIn);
   }
@@ -18,10 +27,11 @@ const Login = () => {
       <div className="absolute top-0 left-0 w-full h-full bg-black opacity-60"></div>
       
       <div className="flex items-center justify-center min-h-screen relative z-10">
-        <form className="bg-black bg-opacity-75 p-8 rounded-lg w-96">
+        <form onSubmit={(e)=>{e.preventDefault()}} className="bg-black bg-opacity-75 p-12 rounded-lg w-96">
           <h2 className="text-white font-bold text-3xl mb-4 text-center">{isSignIn?"Sign In":"Sign Up"}</h2>
           {!isSignIn && (
             <input 
+            ref={fullName}
               type="text" 
               placeholder="Full name" 
               className="p-5 m-2 w-full bg-gray-700 text-white rounded-md placeholder-gray-400"
@@ -29,17 +39,21 @@ const Login = () => {
           )}
           
           <input 
+          ref={email}
             type="text" 
             placeholder="Email or phone number" 
             className="p-5 m-2 w-full bg-gray-700 text-white rounded-md placeholder-gray-400"
           />
           
           <input 
+          ref={password}
             type="password" 
             placeholder="Password" 
             className="p-5 m-2 w-full bg-gray-700 text-white rounded-md placeholder-gray-400"
           />
+          <p className='font-bold text-red-500 p-2 '>{message}</p>
           <button 
+          onClick={handleFormValidation}
             className="bg-red-600 text-white p-3 m-4 w-full rounded-md font-semibold hover:bg-red-700 transition"
           >
             {isSignIn?"Sign In":"Sign Up"}
