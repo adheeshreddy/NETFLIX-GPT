@@ -4,14 +4,13 @@ import { validateForm } from '../utils/validate';
 import {auth} from '../utils/firebase';
 import {  updateProfile } from "firebase/auth";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
+import { NTFLX_BACKGROUND } from '../utils/constants';
 const Login = () => {
   const dispatch=useDispatch();
   const[isSignIn, setIsSignIn] = useState(true); 
   const [message, setMessage] = useState(null);
-    const navigate=useNavigate();
   
   const email=useRef(null);
   const password=useRef(null);
@@ -42,8 +41,6 @@ const handleFormValidation = () => {
       //dispatch from here only 
       const {uid,email,displayName,photoURL} = auth.currentUser;
               dispatch(addUser({uid:uid,email:email,displayName:displayName,photoURL:photoURL}));
-
-      navigate('/browse');
       // ...
     }).catch((error) => {
       // An error occurred
@@ -51,7 +48,6 @@ const handleFormValidation = () => {
       setMessage("Error in updating profile+"+error.message);
     });
     // console.log(user);
-    navigate('/browse');
     // ...
   })
   .catch((error) => {
@@ -71,8 +67,8 @@ const handleFormValidation = () => {
     // Signed in 
     
     const user = userCredential.user;
-    console.log(user);
-    navigate('/browse');
+    // console.log(user);
+    // navigate('/browse');
     // ...
   })
   .catch((error) => {
@@ -97,7 +93,7 @@ const handleFormValidation = () => {
       <Header />
       <img 
         className="absolute top-0 left-0 w-full h-full object-cover opacity-60" 
-        src="https://assets.nflxext.com/ffe/siteui/vlv3/9390f6f6-cf80-4bc9-8981-8c2cc8adf98a/web/IN-en-20250421-TRIFECTA-perspective_dc5bcfdf-88a5-4972-8ffe-b28ff942f76e_large.jpg" 
+        src={NTFLX_BACKGROUND} 
         alt="background" 
       />
       <div className="absolute top-0 left-0 w-full h-full bg-black opacity-60"></div>

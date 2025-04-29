@@ -16,7 +16,14 @@
 - created redux store , with userSlice 
 - implemented signout
 - update profile name , image url
-- 
+- bugfix 1: signup user displayname , profile picture (using dispatch immediately after update)
+- bugfix2 2: redirect to browse page when already logged in , dont give back access /browse
+- cleanfix: unsubscribes to the onauthstatechange callback
+- cleanfix: added all urls , constant values to new file and imported from it
+- got tmdb(the movie database) api to fetch movieslist , and got its details from browse page using useeffect
+- create a moviesSlice to add all the movies into that slice ,dispatch movies 
+- cleaning browse component , (by making all the fetch logic , updating store logic ) exporting this as new hook 
+- buiding browse page 
 
 
 ## Pages , Features
@@ -40,15 +47,3 @@
 - **Netflix GPT Section** (at the top)
   - Search Bar
   - Movie Suggestions based on search
-
-
-
-// create components folder, and have all the components in that
-//similarly for utils folder 
-// make app.js empty , and have all the code in Body component, 
-Body compinents holds 
--login comp
--browse comp 
-
-also provide nice routing using react-router-dom
-        app-router , router-provider 
