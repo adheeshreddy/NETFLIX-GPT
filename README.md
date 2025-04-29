@@ -13,6 +13,10 @@
 - firebase setup
 - deploying our app to production
 - new user sign up , sign in using firebase Authentication
+- created redux store , with userSlice 
+- implemented signout
+- update profile name , image url
+- 
 
 
 ## Pages , Features

@@ -2,10 +2,17 @@ import React, { useRef, useState} from 'react';
 import Header from './Header';
 import { validateForm } from '../utils/validate';
 import {auth} from '../utils/firebase';
+import {  updateProfile } from "firebase/auth";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addUser } from '../utils/userSlice';
 const Login = () => {
+  const dispatch=useDispatch();
   const[isSignIn, setIsSignIn] = useState(true); 
   const [message, setMessage] = useState(null);
+    const navigate=useNavigate();
+  
   const email=useRef(null);
   const password=useRef(null);
   const fullName=useRef(null);
@@ -22,16 +29,36 @@ const handleFormValidation = () => {
     //sign up logic
     createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
   .then((userCredential) => {
+
+    
     // Signed up 
     const user = userCredential.user;
-    console.log(user);
+
+
+    updateProfile(user, {
+      displayName: fullName.current.value, photoURL: "https://avatars.githubusercontent.com/u/117195347?v=4"
+    }).then(() => {
+      // Profile updated!
+      //dispatch from here only 
+      const {uid,email,displayName,photoURL} = auth.currentUser;
+              dispatch(addUser({uid:uid,email:email,displayName:displayName,photoURL:photoURL}));
+
+      navigate('/browse');
+      // ...
+    }).catch((error) => {
+      // An error occurred
+      // ...
+      setMessage("Error in updating profile+"+error.message);
+    });
+    // console.log(user);
+    navigate('/browse');
     // ...
   })
   .catch((error) => {
     // const errorCode = error.code;
     // const errorMessage = error.message;
     // setMessage(errorCode+"-"+errorMessage);
-    setMessage("Invalid email or password");
+    setMessage("Invalid email or password"+error.message);
     // ..
   });
     
@@ -42,8 +69,10 @@ const handleFormValidation = () => {
     signInWithEmailAndPassword(auth, email.current.value, password.current.value)
   .then((userCredential) => {
     // Signed in 
+    
     const user = userCredential.user;
     console.log(user);
+    navigate('/browse');
     // ...
   })
   .catch((error) => {
@@ -51,7 +80,7 @@ const handleFormValidation = () => {
     // const errorMessage = error.message;
     // console.log(errorCode+""+errorMessage);
     // setMessage(errorCode+"-"+errorMessage);
-    setMessage("Invalid email or password");
+    setMessage("Invalid email or password"+error.message);
   });
     
    }
