@@ -31,6 +31,9 @@
 - with tailwind css made good ui
 - added secondary container (moviesList*n)- movieCards*n
 - added catergories of moviesList (popular , nowPlaying ...)
+- added categories of movieslist (upcoming movies)
+- completed browse page 
+- todo chatgpt search page
 
 ## Pages , Features
 

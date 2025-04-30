@@ -7,7 +7,7 @@ const MainContainer = () => {
 
     const movies=useSelector((state)=>state.movies?.nowPlayingMovies);
     if(!movies) return;
-    const index=Math.floor(Math.random() * (10 - 0 + 1) + 0);
+    const index=Math.floor(Math.random() * (19 - 0 + 1) + 0);
     const mainMovie=movies[index];
     // console.log(mainMovie);
     const {original_title, overview, id}=mainMovie;
