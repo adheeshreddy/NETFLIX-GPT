@@ -24,6 +24,11 @@
 - create a moviesSlice to add all the movies into that slice ,dispatch movies 
 - cleaning browse component , (by making all the fetch logic , updating store logic ) exporting this as new hook 
 - buiding browse page 
+- planning for main container , secondary container
+- fetch data for trailer video ,
+- update store with trailer video data
+- embeded youtube video , mae it autoplay and mute 
+- with tailwind css made good ui
 
 
 ## Pages , Features
