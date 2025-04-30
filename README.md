@@ -29,7 +29,8 @@
 - update store with trailer video data
 - embeded youtube video , mae it autoplay and mute 
 - with tailwind css made good ui
-
+- added secondary container (moviesList*n)- movieCards*n
+- added catergories of moviesList (popular , nowPlaying ...)
 
 ## Pages , Features
 

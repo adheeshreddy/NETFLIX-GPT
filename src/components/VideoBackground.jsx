@@ -23,13 +23,13 @@ let videoKey=useSelector((store)=>store.movies?.trailerVideo?.key);
 return (
     <div className="w-full overflow-hidden">
       <iframe
-        className="w-full aspect-video"
-        src={`https://www.youtube.com/embed/${videoKey}?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&modestbranding=1&rel=0&playlist=${videoKey}`}
-        title="YouTube video player"
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-      ></iframe>
+  src={`https://www.youtube.com/embed/${videoKey}?autoplay=1&mute=1&loop=1&controls=0&playlist=${videoKey}`}
+  title="YouTube video"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowFullScreen
+  className="w-full aspect-video"
+/>
+
     </div>
   );
   

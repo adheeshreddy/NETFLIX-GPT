@@ -3,11 +3,13 @@ import Header from './Header'
 import useNowPlayingMovies from '../hooks/useNowPlayingMovies'
 import MainContainer from './MainContainer';
 import SecondaryContainer from './SecondaryContainer';
+import usePopularMovies from '../hooks/usePopularMovies';
 const Browse = () => {
 
   useNowPlayingMovies();
+  usePopularMovies();
   return (
-    <div className="min-h-screen overflow-x-hidden">
+    <div className="overflow-x-hidden border-0 m-0">
       <Header/>
       <MainContainer/>
       <SecondaryContainer/>
