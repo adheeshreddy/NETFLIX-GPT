@@ -1,4 +1,22 @@
 # Project Structure
+# Login Page
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/30c25902-f20b-417f-9c8a-1f54ce45ee69" />
+
+# Sign In Page
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/54b002de-73f4-4d83-9b04-6f73019ca70a" />
+
+# Home Page
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/55b2e87a-0e68-449d-b964-d94f36564730" />
+
+# Now Playing , Upcoming Movies 
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/35836c5d-8300-4ecb-8a72-e033dcce3108" />
+
+# Used Firebase for Authentication and Deployment
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/6f5e0661-79a8-41a9-8589-89c3130b1638" />
+
+# Used TMDB (The Movie DataBase) Apis for Movies and trailers Data
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/01d4d1d6-2418-4f69-84d4-eb0ef55c29dd" />
+
 
 
 # netflix gpt
